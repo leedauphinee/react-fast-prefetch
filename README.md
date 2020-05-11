@@ -3,16 +3,14 @@
 Prefetch data in your react apps before the component renders.
 `yarn add react-fast-prefetch`
 
-`
-import {ReactPrefetchProvider} from 'react-fast-prefetch'
+`import {ReactPrefetchProvider} from "react-fast-prefetch"
 
 <ReactPrefetchProvider>
     <YourApp />
 </ReactPrefetchProvider>
 `
 
-`
-import {useReactPrefetch} from 'react-fast-prefetch'
+`import {useReactPrefetch} from "react-fast-prefetch"
 
 const Home = () => {
 
@@ -29,8 +27,7 @@ const Home = () => {
 }
 `
 
-`
-import {useReactPrefetch} from 'react-fast-prefetch'
+`import {useReactPrefetch} from "react-fast-prefetch"
 
 const About = () => {
 const {fetchData} = useReactPrefetch()
