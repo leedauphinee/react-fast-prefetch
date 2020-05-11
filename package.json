@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leedauphinee/react-prefetch.git"
+    "url": "git+https://github.com/leedauphinee/react-fast-prefetch.git"
   },
   "author": "https://github.com/leedauphinee",
   "license": "ISC",
