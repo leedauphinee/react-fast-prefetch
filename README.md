@@ -1,7 +1,10 @@
 # react-prefetch
 
 Prefetch data in your react apps before the component renders.
-`yarn add react-fast-prefetch`
+
+```
+yarn add react-fast-prefetch
+```
 
 ```javascript
 import { ReactPrefetchProvider } from "react-fast-prefetch";
