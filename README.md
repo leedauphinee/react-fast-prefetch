@@ -1,4 +1,4 @@
-# react-prefetch
+# react-fast-prefetch
 
 Prefetch data in your react apps before your components renders.
 
