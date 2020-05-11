@@ -60,7 +60,9 @@ const ReactPrefetchProvider = ({ children }) => {
 const useReactPrefetch = () => {
   const context = useContext(ReactPrefetchContext);
   if (context === undefined) {
-    throw new Error("useUser can only be used inside UserProvider");
+    throw new Error(
+      "useReactPrefetch can only be used inside ReactPrefetchProvider"
+    );
   }
   const [PromiseRef, prefetch, fetchData] = context;
 
