@@ -1,6 +1,6 @@
 # react-fast-prefetch
 
-Prefetch data in your react apps before your components renders.
+Start prefetching data in your react apps before your components renders.
 
 ```
 yarn add react-fast-prefetch
