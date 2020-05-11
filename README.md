@@ -36,10 +36,10 @@ const Home = () => {
 In your component that that needs data, destructure fetchData from the hook, and use it like you would with axios.
 
 ```javascript
-import {useReactPrefetch} from "react-fast-prefetch"
+import { useReactPrefetch } from "react-fast-prefetch"
 
 const About = () => {
-const {fetchData} = useReactPrefetch()
+const { fetchData } = useReactPrefetch()
 
     useEffect(() => {
         fetchData('https://jsonplaceholder.typicode.com/todos/1').then(response =>
