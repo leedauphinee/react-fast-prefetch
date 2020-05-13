@@ -7,6 +7,7 @@ yarn add react-fast-prefetch
 ```
 
 Example using redux: https://codesandbox.io/s/react-fast-prefetch-redux-f8f7n
+
 Example VS not using it: https://codesandbox.io/s/smart-fetch-skz09
 
 Export the ReactPrefetchProvider and wrap your app in it. This allows us to use the useReactPrefetch from anywhere on our site.
