@@ -4,7 +4,8 @@
   "description": "Begin fetching data before your react component renders",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "build": "tsc --jsx react"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/leedauphinee/react-prefetch#readme",
   "dependencies": {
-    "axios": "0.19.2"
+    "axios": "0.19.2",
+    "react": "^16.13.1",
+    "typescript": "^3.9.3"
   }
 }
