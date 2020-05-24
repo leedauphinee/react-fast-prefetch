@@ -3,5 +3,6 @@
     "lib": ["dom", "es2015"],
     "outDir": "./"
   },
-  "files": ["src/index.tsx"]
+  "files": ["src/index.tsx"],
+  "esModuleInterop": true
 }
