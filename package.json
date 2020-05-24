@@ -1,6 +1,6 @@
 {
   "name": "react-fast-prefetch",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Begin fetching data before your react component renders",
   "main": "index.js",
   "scripts": {
