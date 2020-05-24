@@ -1,12 +1,12 @@
-import React, { useRef, useEffect, useContext } from "react";
+import * as React from "react";
 import axios from "axios";
 
 const ReactPrefetchContext = React.createContext(undefined);
 
 const ReactPrefetchProvider = ({ children }) => {
-  const PromiseRef = useRef([]);
+  const PromiseRef = React.useRef([]);
 
-  const prefetch = (url, options = {}) => {
+  const prefetch = (url: string, options = {}) => {
     const newData = PromiseRef.current.find((data) => data.url === url);
 
     if (newData) {
@@ -58,7 +58,7 @@ const ReactPrefetchProvider = ({ children }) => {
 };
 
 const useReactPrefetch = () => {
-  const context = useContext(ReactPrefetchContext);
+  const context = React.useContext(ReactPrefetchContext);
   if (context === undefined) {
     throw new Error(
       "useReactPrefetch can only be used inside ReactPrefetchProvider"
@@ -66,7 +66,7 @@ const useReactPrefetch = () => {
   }
   const [PromiseRef, prefetch, fetchData] = context;
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       return (PromiseRef.current = []);
     };
