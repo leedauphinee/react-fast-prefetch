@@ -1,70 +1,57 @@
-"use strict";
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
-exports.__esModule = true;
-exports.useReactPrefetch = exports.ReactPrefetchProvider = void 0;
-var react_1 = require("react");
-var axios_1 = require("axios");
-var ReactPrefetchContext = react_1["default"].createContext(undefined);
-var ReactPrefetchProvider = function (_a) {
-    var children = _a.children;
-    var PromiseRef = react_1.useRef([]);
-    var prefetch = function (url, options) {
-        if (options === void 0) { options = {}; }
-        var newData = PromiseRef.current.find(function (data) { return data.url === url; });
+import * as React from "react";
+import axios from "axios";
+const ReactPrefetchContext = React.createContext([]);
+export const ReactPrefetchProvider = ({ children }) => {
+    const PromiseRef = React.useRef([]);
+    const prefetch = (url, options = {}) => {
+        const newData = PromiseRef.current.find((data) => data.url === url);
         if (newData) {
             return;
         }
-        var promise = axios_1["default"].get(url, options);
-        var data = __spreadArrays(PromiseRef.current, [{ url: url, value: promise }]);
+        const promise = axios.get(url, options);
+        const data = [...PromiseRef.current, { url, value: promise }];
         PromiseRef.current = data;
     };
-    var fetchData = function (url, options) {
-        if (options === void 0) { options = {}; }
-        var test1 = PromiseRef.current.find(function (data) { return data.url === url; });
+    const fetchData = (url, options = {}) => {
+        const test1 = PromiseRef.current.find((data) => data.url === url);
         if (test1) {
             if (test1.value instanceof Promise) {
                 return test1.value;
             }
         }
-        return new Promise(function (resolve, reject) {
-            var newData = PromiseRef.current.find(function (data) { return data.url === url; });
+        return new Promise((resolve, reject) => {
+            const newData = PromiseRef.current.find((data) => data.url === url);
             if (newData) {
                 resolve(newData.value);
-                var data_1 = PromiseRef.current.filter(function (d) { return d.url !== url; });
-                PromiseRef.current = data_1;
+                const data = PromiseRef.current.filter((d) => d.url !== url);
+                PromiseRef.current = data;
             }
             else {
-                axios_1["default"]
-                    .get(url)
-                    .then(function (res) {
+                axios
+                    .get(url, options)
+                    .then((res) => {
                     resolve(res);
-                })["catch"](function (err) {
+                })
+                    .catch((err) => {
                     reject(err);
                 });
             }
         });
     };
-    var data = [PromiseRef.current, prefetch, fetchData];
-    return (react_1["default"].createElement(ReactPrefetchContext.Provider, { value: data }, children));
+    const data = [PromiseRef.current, prefetch, fetchData];
+    return (React.createElement(ReactPrefetchContext.Provider, { value: data }, children));
 };
-exports.ReactPrefetchProvider = ReactPrefetchProvider;
-var useReactPrefetch = function () {
-    var context = react_1.useContext(ReactPrefetchContext);
+export const useReactPrefetch = () => {
+    const context = React.useContext(ReactPrefetchContext);
     if (context === undefined) {
         throw new Error("useReactPrefetch can only be used inside ReactPrefetchProvider");
     }
-    var PromiseRef = context[0], prefetch = context[1], fetchData = context[2];
-    react_1.useEffect(function () {
-        return function () {
+    const [PromiseRef, prefetch, fetchData] = context;
+    React.useEffect(() => {
+        return () => {
             return (PromiseRef.current = []);
         };
     }, []);
-    return { prefetch: prefetch, fetchData: fetchData };
+    return { prefetch, fetchData };
 };
-exports.useReactPrefetch = useReactPrefetch;
+//# sourceMappingURL=index.js.map

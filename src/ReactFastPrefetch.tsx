@@ -58,6 +58,7 @@ export const ReactPrefetchProvider = ({ children }) => {
 };
 
 export const useReactPrefetch = () => {
+  const ReactPrefetchContext = React.createContext([]);
   const context = React.useContext(ReactPrefetchContext);
   if (context === undefined) {
     throw new Error(
