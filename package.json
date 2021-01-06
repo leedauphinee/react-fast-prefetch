@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/leedauphinee/react-prefetch#readme",
   "dependencies": {
-    "axios": "0.19.2"
+    "axios": "0.21.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.35",
